@@ -51,7 +51,7 @@ function CarShow() {
       <Ground />
       <Rings />
       <Boxes />
-      <FloatingGrid />
+      {/* <FloatingGrid /> */}
       
       <CubeCamera resolution={256} frames={Infinity}>
         {(texture) => (
@@ -70,12 +70,12 @@ function CarShow() {
           width={300} // render width
           height={300} // render height
           kernelSize={4} // blur kernel size
-          luminanceThreshold={0.15} // luminance threshold. Raise this value to mask out darker elements in the scene.
-          luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
+          luminanceThreshold={0.20} // luminance threshold. Raise this value to mask out darker elements in the scene.
+          luminanceSmoothing={0.25} // smoothness of the luminance threshold. Range is [0, 1]
         />
         <ChromaticAberration
           blendFunction={BlendFunction.NORMAL} // blend mode
-          offset={[0.0005, 0.0012]} // color offset
+          offset={[0.0002, 0.0002]} // color offset
         />
       </EffectComposer>
     </>
