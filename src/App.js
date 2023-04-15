@@ -15,10 +15,10 @@ import {
 } from "@react-three/drei";
 import "./style.css";
 // import { Boxes } from "./Boxes";
-// import { Car } from "./Car";
+import { Car } from "./Car";
 import { Ground } from "./Ground";
 // import { FloatingGrid } from "./FloatingGrid";
-// import { Rings } from "./Rings";
+import { Rings } from "./Rings";
 
 function CarShow() {
   return (
@@ -49,6 +49,16 @@ function CarShow() {
       />
 
       <Ground />
+      <Rings />
+      
+      <CubeCamera resolution={256} frames={Infinity}>
+        {(texture) => (
+          <>
+            <Environment map={texture} />
+            <Car />
+          </>
+        )}
+      </CubeCamera>
     </>
   );
 }
