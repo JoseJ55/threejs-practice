@@ -14,10 +14,10 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 import "./style.css";
-// import { Boxes } from "./Boxes";
+import { Boxes } from "./Boxes";
 import { Car } from "./Car";
 import { Ground } from "./Ground";
-// import { FloatingGrid } from "./FloatingGrid";
+import { FloatingGrid } from "./FloatingGrid";
 import { Rings } from "./Rings";
 
 function CarShow() {
@@ -50,6 +50,8 @@ function CarShow() {
 
       <Ground />
       <Rings />
+      <Boxes />
+      <FloatingGrid />
       
       <CubeCamera resolution={256} frames={Infinity}>
         {(texture) => (
@@ -59,6 +61,23 @@ function CarShow() {
           </>
         )}
       </CubeCamera>
+
+      <EffectComposer>
+        {/* <DepthOfField focusDistance={0.0035} focalLength={0.01} bokehScale={3} height={480} /> */}
+        <Bloom
+          blendFunction={BlendFunction.ADD}
+          intensity={1} // The bloom intensity.
+          width={300} // render width
+          height={300} // render height
+          kernelSize={4} // blur kernel size
+          luminanceThreshold={0.15} // luminance threshold. Raise this value to mask out darker elements in the scene.
+          luminanceSmoothing={0.025} // smoothness of the luminance threshold. Range is [0, 1]
+        />
+        <ChromaticAberration
+          blendFunction={BlendFunction.NORMAL} // blend mode
+          offset={[0.0005, 0.0012]} // color offset
+        />
+      </EffectComposer>
     </>
   );
 }
